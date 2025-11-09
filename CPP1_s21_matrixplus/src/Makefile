@@ -1,7 +1,7 @@
-LIB_NAME	= s21_matrix_oop.a
+LIB_NAME = s21_matrix_oop.a
 CC = gcc
 STD_FLAG = -lstdc++
-CPP_FLAGS = -std=c++17 -pedantic -Wall -Werror -Wextra
+CPP_FLAGS = -std=c++20 -pedantic -Wall -Werror -Wextra
 GTEST_FLAGS = -lgtest
 OS := $(shell uname -s)
 LINUX_FLAG =
@@ -10,7 +10,7 @@ ifeq ($(OS), Linux)
 endif
 SRC = s21_matrix_oop.cc
 TEST_NAME = s21_matrix_oop_unit_test
-SRC_TEST	= s21_matrix_oop_unit_test.cc
+SRC_TEST = s21_matrix_oop_unit_test.cc
 
 .PHONY: all test clean iclang clang leaks
  
