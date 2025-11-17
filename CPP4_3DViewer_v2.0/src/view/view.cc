@@ -11,8 +11,7 @@ View::View(QWidget* parent)
       wh(Qt::white),
       ui(new Ui::View),
       controller_(coordinates_, vertices_, filename_),
-      timer_(new QTimer(0)),
-      gif_time_(0) {
+      timer_(new QTimer(0)) {
   ui->setupUi(this);
   ui->widget->backColor = Qt::gray;
   ui->widget->vertices_ = &this->vertices_;
@@ -86,9 +85,9 @@ int View::loadMod(QString filename) {
     interface(true);
     last_obj = filename;
     ui->label->setText(filename);
-    ui->vectors->setText("Vectors: " +
+    ui->label_vectors->setText("Vectors: " +
                          QString::number(coordinates_.size() / 6));
-    ui->vertex->setText("Vertices: " + QString::number(vertices_.size() / 3));
+    ui->label_vertices->setText("Vertices: " + QString::number(vertices_.size() / 3));
   } else {
     ui->label->setText("ERROR. Please try another file");
     on_loadModelFileButton_clicked();
@@ -241,37 +240,11 @@ void View::loadSetts() {
   last_obj = settings.value("Last_file", "").toString();
 }
 
-void View::on_screencastButton_clicked() { timer_->start(100); }
+void View::on_screencastButton_clicked() { }
 
-void View::GifRecord() {
-  if (gif_time_ < 4.9) {
-    imgQVector.push_back(ui->widget->grabFramebuffer());
-    gif_time_ += 0.1;
-    ui->gif_timer_label->setText(QString::number(gif_time_, 'f', 2));
-  } else {
-    SaveGif();
-    timer_->stop();
-  }
-}
+void View::GifRecord() {}
 
-void View::SaveGif() {
-  QFileDialog dialog(this);
-  QString path =
-      QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-  QString gifQString =
-      dialog.getSaveFileName(this, "Save gif as...", path, "GIF (*.gif);;");
-  QGifImage gif;
-  gif.setDefaultTransparentColor(Qt::black);
-  gif.setDefaultDelay(100);
-  for (auto img : imgQVector) {
-    QImage img_scaled = img.scaled(640, 480);
-    gif.addFrame(img_scaled);
-  }
-  gif.save(gifQString);
-  imgQVector.clear();
-  gif_time_ = 0;
-  ui->gif_timer_label->setText("");
-}
+void View::SaveGif() {}
 
 void View::on_screenshotButton_clicked() {
   QImage img(ui->widget->size(), QImage::Format_RGB32);

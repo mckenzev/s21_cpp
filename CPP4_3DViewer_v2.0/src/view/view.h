@@ -13,9 +13,7 @@
 #include <QtCore>
 
 #include "../controller/controller.h"
-#include "../model/model.h"
 #include "../utils.h"
-#include "qtgifimage/src/gifimage/qgifimage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
