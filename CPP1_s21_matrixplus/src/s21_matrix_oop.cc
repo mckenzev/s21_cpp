@@ -1,13 +1,13 @@
 #include "s21_matrix_oop.h"
 
+#include <algorithm>
 #include <cmath>
 #include <iostream>
 #include <utility>
 
 S21Matrix::S21Matrix() noexcept = default;
 
-S21Matrix::S21Matrix(int rows, int cols)
-    : matrix_(rows, cols) {
+S21Matrix::S21Matrix(int rows, int cols) : matrix_(rows, cols) {
   if (rows < 1 || cols < 1) {
     throw std::invalid_argument("Invalid number of columns or rows");
   }
@@ -24,6 +24,7 @@ S21Matrix& S21Matrix::operator=(const S21Matrix& other) {
     RawMatrix new_matrix(other.matrix_);
     matrix_.Swap(new_matrix);
   }
+
   return *this;
 }
 
@@ -31,6 +32,7 @@ S21Matrix& S21Matrix::operator=(S21Matrix&& other) noexcept {
   if (this != &other) {
     matrix_.Swap(other.matrix_);
   }
+
   return *this;
 }
 
@@ -61,40 +63,49 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) const noexcept {
   return true;
 }
 
-void S21Matrix::SumMatrix(const S21Matrix& other) {
+template <typename Func>
+void S21Matrix::SimpleMatrixTransformation(const S21Matrix& other, Func func) {
   if (GetRows() != other.GetRows() || GetCols() != other.GetCols()) {
     throw std::logic_error("The matrices differ in size");
   }
-  
-  for (int i = 0; i < GetRows(); i++) {
-    auto cur_row = matrix_[i];
-    const auto other_row = other.matrix_[i];
-    for (int j = 0; j < GetCols(); j++) {
-      cur_row[j] += other_row[j];
-    }
+
+  // total_size при пустой матрице итак будет 0, но при пустой матрице не получится получить первый элемент по нулевому указателю (&matrix_[0][0])
+  if (matrix_.IsEmpty()) {
+    return;
   }
+
+  // Зная, что матрица построенна на одномерном массиве, можно без вложенных циклов пройтись от matrix[0][0] до total_size
+  size_t total_size = matrix_.GetColsCount() * matrix_.GetRowsCount();
+  double* this_matrix = &matrix_[0][0];
+  const double* other_matrix = &other.matrix_[0][0];
+  
+  std::transform(this_matrix, this_matrix + total_size, other_matrix, func);
+}
+
+void S21Matrix::SumMatrix(const S21Matrix& other) {
+  SimpleMatrixTransformation(other, [](double& lhs, double rhs) {
+    lhs += rhs;
+  });
 }
 
 void S21Matrix::SubMatrix(const S21Matrix& other) {
-  if (GetRows() != other.GetRows() || GetCols() != other.GetCols()) {
-    throw std::logic_error("The matrices differ in size");
-  }
-  
-  for (int i = 0; i < GetRows(); i++) {
-    auto cur_row = matrix_[i];
-    const auto other_row = other.matrix_[i];
-    for (int j = 0; j < GetCols(); j++) {
-      cur_row[j] -= other_row[j];
-    }
-  }
+  SimpleMatrixTransformation(other, [](double& lhs, double rhs) {
+    lhs -= rhs;
+  });
 }
 
-void S21Matrix::MulNumber(const double num) noexcept{
-  for (int i = 0; i < GetRows(); i++) {
-    auto row = matrix_[i];
-    for (int j = 0; j < GetCols(); j++) {
-      row[j] *= num;
-    }
+void S21Matrix::MulNumber(const double num) noexcept {
+  if (matrix_.IsEmpty()) {
+    return;
+  }
+
+  size_t total_size = matrix_.GetColsCount() * matrix_.GetRowsCount();
+  double* begin = &matrix_[0][0];
+  double* end = begin + total_size;
+
+  while (begin != end) {
+    *begin *= num;
+    ++begin;
   }
 }
 

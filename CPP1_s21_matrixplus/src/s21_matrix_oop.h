@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <cstring>
 #include <cassert>
+#include <forward_list>
 
 #include <utility>
 
@@ -96,6 +97,10 @@ public:
     return const_cast<RawMatrix*>(this)->operator[](row_id);
   }
 
+  bool IsEmpty() const noexcept {
+    return rows_ == 0 || cols_ == 0;
+  }
+
 private:
   double* data_ = nullptr;
   uint32_t rows_ = 0;
@@ -132,10 +137,12 @@ public:
   S21Matrix operator-(const S21Matrix& other) const;
   S21Matrix operator*(const S21Matrix& other) const;
   S21Matrix operator*(const double num) const;
+
   S21Matrix& operator+=(const S21Matrix& other);
   S21Matrix& operator-=(const S21Matrix& other);
   S21Matrix& operator*=(const S21Matrix& other);
   S21Matrix& operator*=(const double num);
+
   bool operator==(const S21Matrix& other) const noexcept;
 
   friend S21Matrix operator*(double number, S21Matrix& other);
@@ -144,4 +151,7 @@ public:
 
  private:
   RawMatrix matrix_;
+
+  template <typename Func>
+  void SimpleMatrixTransformation(const S21Matrix& other, Func func);
 };
