@@ -9,7 +9,6 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QTextEdit>
-#include <QTimer>
 #include <QtCore>
 
 #include "../controller/controller.h"
@@ -20,65 +19,61 @@ namespace Ui {
 class View;
 }
 QT_END_NAMESPACE
+
 namespace s21 {
 class View : public QMainWindow {
   Q_OBJECT
  public:
   View(QWidget* parent = nullptr);
   ~View();
-  void saveSetts();
-  void loadSetts();
+  // void SaveSetts();
+  // void loadSetts();
   QColor bk, bl, wh;
   QString last_obj;
 
  private slots:
-  void interface(bool a);
-  void loadChecker();
-  bool on_loadModelFileButton_clicked();
-  int loadMod(QString filename);
-  void moveRepeat();
-  void on_changeBGColorButton_clicked();
-  void on_checkBox_ln_clicked(bool checked);
-  void on_checkBox_pn_clicked(bool checked);
-  void on_pnSizeSpinBox_valueChanged(double arg1);
-  void on_radio_sphere_clicked(bool checked);
-  void on_radio_cube_clicked(bool checked);
-  void on_checkBox_ln_2_clicked(bool checked);
-  void on_lnWidthSpinBox_valueChanged(double arg1);
-  void on_radioButton_4_clicked();
-  void on_radioButton_5_clicked();
-  void on_edgesColorButton_clicked();
-  void on_verticesColorButton_clicked();
-  void on_moveRightButton_clicked();
-  void on_moveLeftButton_clicked();
-  void on_moveDownButton_clicked();
-  void on_moveUpButton_clicked();
-  void on_moveBackwardButton_clicked();
-  void on_moveForwardButton_clicked();
-  void on_rotateDownButton_clicked();
-  void on_rotateUpButton_clicked();
-  void on_rotateLeftButton_clicked();
-  void on_rotateRightButton_clicked();
-  void on_rotateClockwiseButton_clicked();
-  void on_rotateCounterclockwiseButton_clicked();
-  void on_doubleSpinBox_valueChanged(double arg1);
-  void on_screencastButton_clicked();
-  void on_screenshotButton_clicked();
-  void makeRotate(const double& step, const s21::Axis& axis);
-  void makeMove(const double& step, const s21::Axis& axis);
-  void GifRecord();
+  void LoadChecker();
+  int LoadMod(QString filename);
+  void MoveRepeat();
+
+  bool on_btn_open_clicked();
+  void on_btn_bg_color_clicked();
+  void on_cb_lines_clicked(bool);
+  void on_cb_points_clicked(bool);
+  void on_sb_points_size_valueChanged(double);
+  void on_rb_sphere_clicked(bool);
+  void on_rb_cube_clicked(bool);
+  void on_cb_dotted_clicked(bool checked);
+  void on_sb_lines_size_valueChanged(double arg1);
+  void on_rb_central_projection_clicked(bool);
+  void on_rb_parallel_projection_clicked(bool);
+  void on_btn_lines_color_clicked();
+  void on_btn_points_color_clicked();
+  void on_btn_right_move_clicked();
+  void on_btn_left_move_clicked();
+  void on_btn_down_move_clicked();
+  void on_btn_up_move_clicked();
+  void on_btn_backward_move_clicked();
+  void on_btn_forward_move_clicked();
+  void on_btn_down_rotate_clicked();
+  void on_btn_up_rotate_clicked();
+  void on_btn_left_rotate_clicked();
+  void on_btn_right_rotate_clicked();
+  void on_btn_clockwise_rotate_clicked();
+  void on_btn_counterlock_rotate_clicked();
+  void on_sb_size_valueChanged(double);
+  void on_btn_screenshot_clicked();
+
+  void Rotate(double step, s21::Axis axis);
+  void Move(double step, s21::Axis axis);
 
  private:
-  void SaveGif();
 
   Ui::View* ui;
   std::string filename_;
   std::vector<double> coordinates_;
   std::vector<double> vertices_;
   Controller controller_;
-  QTimer* timer_;
-  double gif_time_;
-  QVector<QImage> imgQVector;
 };
 }  // namespace s21
 #endif  // VIEWER_V_2_0_SRC_VIEW_H

@@ -5,11 +5,11 @@
 
 namespace s21 {
 
-void Controller::Rotate(const double& step, const Axis& axis) {
+void Controller::Rotate(double step, Axis axis) {
   model_.Rotate(step, axis);
 }
 
-void Controller::Move(const double& step, const Axis& axis) {
+void Controller::Move(double step, Axis axis) {
   model_.Move(step, axis);
 }
 

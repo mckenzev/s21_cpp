@@ -33,69 +33,66 @@ class Ui_View
 public:
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout_2;
-    QHBoxLayout *horizontalLayout;
     s21::GLWidget *widget;
     QVBoxLayout *verticalLayout_4;
-    QVBoxLayout *verticalLayout_3;
-    QLabel *label;
-    QHBoxLayout *horizontalLayout_11;
-    QLabel *label_vertices;
-    QLabel *label_vectors;
+    QVBoxLayout *layout_optional_btns;
+    QLabel *lbl_filename;
+    QHBoxLayout *layout_info_labels;
+    QLabel *lbl_vertices;
+    QLabel *lbl_vectors;
     QTabWidget *tabWidget;
     QWidget *tab;
     QVBoxLayout *verticalLayout_6;
-    QGridLayout *gridLayout_3;
-    QRadioButton *radioButton_4;
-    QLabel *label_2;
-    QRadioButton *radioButton_5;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *label_4;
-    QDoubleSpinBox *doubleSpinBox;
+    QGridLayout *layout_projection;
+    QRadioButton *rb_parallel_projection;
+    QLabel *lbl_projection;
+    QRadioButton *rb_central_projection;
+    QHBoxLayout *layout_size;
+    QLabel *lbl_size;
+    QDoubleSpinBox *sb_size;
     QSpacerItem *verticalSpacer_5;
     QWidget *tab_2;
     QVBoxLayout *verticalLayout_7;
-    QHBoxLayout *horizontalLayout_5;
-    QPushButton *moveLeftButton;
-    QPushButton *moveRightButton;
-    QHBoxLayout *horizontalLayout_6;
-    QPushButton *moveUpButton;
-    QPushButton *moveDownButton;
-    QHBoxLayout *horizontalLayout_7;
-    QPushButton *moveForwardButton;
-    QPushButton *moveBackwardButton;
-    QHBoxLayout *horizontalLayout_8;
-    QPushButton *rotateUpButton;
-    QPushButton *rotateDownButton;
-    QHBoxLayout *horizontalLayout_9;
-    QPushButton *rotateLeftButton;
-    QPushButton *rotateRightButton;
-    QHBoxLayout *horizontalLayout_10;
-    QPushButton *rotateClockwiseButton;
-    QPushButton *rotateCounterclockwiseButton;
+    QHBoxLayout *x_move_layout;
+    QPushButton *btn_left_move;
+    QPushButton *btn_right_move;
+    QHBoxLayout *y_move_layout;
+    QPushButton *btn_up_move;
+    QPushButton *btn_down_move;
+    QHBoxLayout *z_move_layout;
+    QPushButton *btn_forward_move;
+    QPushButton *btn_backward_move;
+    QHBoxLayout *layout_up_down_rotate;
+    QPushButton *btn_up_rotate;
+    QPushButton *btn_down_rotate;
+    QHBoxLayout *layout_left_right;
+    QPushButton *btn_left_rotate;
+    QPushButton *btn_right_rotate;
+    QHBoxLayout *layout_clockwise_rotate;
+    QPushButton *btn_clockwise_rotate;
+    QPushButton *btn_counterlock_rotate;
     QSpacerItem *verticalSpacer_4;
     QWidget *tab_3;
     QVBoxLayout *verticalLayout_5;
-    QGridLayout *gridLayout;
-    QRadioButton *radio_sphere;
-    QCheckBox *checkBox_ln;
-    QDoubleSpinBox *lnWidthSpinBox;
-    QDoubleSpinBox *pnSizeSpinBox;
-    QPushButton *verticesColorButton;
-    QCheckBox *checkBox_pn;
-    QPushButton *edgesColorButton;
-    QRadioButton *radio_cube;
-    QCheckBox *checkBox_ln_2;
-    QPushButton *changeBGColorButton;
+    QGridLayout *layout_render_settings;
+    QRadioButton *rb_sphere;
+    QCheckBox *cb_lines;
+    QDoubleSpinBox *sb_lines_size;
+    QDoubleSpinBox *sb_points_size;
+    QPushButton *btn_points_color;
+    QCheckBox *cb_points;
+    QPushButton *btn_lines_color;
+    QRadioButton *rb_cube;
+    QCheckBox *cb_dotted;
+    QPushButton *btn_bg_color;
     QSpacerItem *verticalSpacer_3;
     QWidget *tab_4;
-    QLabel *gif_timer_label;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QPushButton *screenshotButton;
-    QSpacerItem *verticalSpacer;
     QVBoxLayout *verticalLayout_2;
-    QPushButton *loadModelFileButton;
-    QPushButton *QuitButton;
+    QPushButton *btn_screenshot;
+    QSpacerItem *verticalSpacer;
+    QVBoxLayout *layout_main_btns;
+    QPushButton *btn_open;
+    QPushButton *btn_quit;
     QSpacerItem *verticalSpacer_2;
     QMenuBar *menuBar;
 
@@ -119,42 +116,40 @@ public:
         centralwidget->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout_2 = new QHBoxLayout(centralwidget);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName("horizontalLayout");
         widget = new s21::GLWidget(centralwidget);
         widget->setObjectName("widget");
         sizePolicy.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
         widget->setSizePolicy(sizePolicy);
 
-        horizontalLayout->addWidget(widget);
+        horizontalLayout_2->addWidget(widget);
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName("verticalLayout_4");
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setObjectName("verticalLayout_3");
-        label = new QLabel(centralwidget);
-        label->setObjectName("label");
+        layout_optional_btns = new QVBoxLayout();
+        layout_optional_btns->setObjectName("layout_optional_btns");
+        lbl_filename = new QLabel(centralwidget);
+        lbl_filename->setObjectName("lbl_filename");
         QFont font;
         font.setPointSize(9);
-        label->setFont(font);
-        label->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        lbl_filename->setFont(font);
+        lbl_filename->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        verticalLayout_3->addWidget(label);
+        layout_optional_btns->addWidget(lbl_filename);
 
-        horizontalLayout_11 = new QHBoxLayout();
-        horizontalLayout_11->setObjectName("horizontalLayout_11");
-        label_vertices = new QLabel(centralwidget);
-        label_vertices->setObjectName("label_vertices");
+        layout_info_labels = new QHBoxLayout();
+        layout_info_labels->setObjectName("layout_info_labels");
+        lbl_vertices = new QLabel(centralwidget);
+        lbl_vertices->setObjectName("lbl_vertices");
 
-        horizontalLayout_11->addWidget(label_vertices);
+        layout_info_labels->addWidget(lbl_vertices);
 
-        label_vectors = new QLabel(centralwidget);
-        label_vectors->setObjectName("label_vectors");
+        lbl_vectors = new QLabel(centralwidget);
+        lbl_vectors->setObjectName("lbl_vectors");
 
-        horizontalLayout_11->addWidget(label_vectors);
+        layout_info_labels->addWidget(lbl_vectors);
 
 
-        verticalLayout_3->addLayout(horizontalLayout_11);
+        layout_optional_btns->addLayout(layout_info_labels);
 
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
@@ -163,55 +158,55 @@ public:
         tab->setObjectName("tab");
         verticalLayout_6 = new QVBoxLayout(tab);
         verticalLayout_6->setObjectName("verticalLayout_6");
-        gridLayout_3 = new QGridLayout();
-        gridLayout_3->setObjectName("gridLayout_3");
-        radioButton_4 = new QRadioButton(tab);
-        radioButton_4->setObjectName("radioButton_4");
+        layout_projection = new QGridLayout();
+        layout_projection->setObjectName("layout_projection");
+        rb_parallel_projection = new QRadioButton(tab);
+        rb_parallel_projection->setObjectName("rb_parallel_projection");
 
-        gridLayout_3->addWidget(radioButton_4, 0, 2, 1, 1);
+        layout_projection->addWidget(rb_parallel_projection, 0, 2, 1, 1);
 
-        label_2 = new QLabel(tab);
-        label_2->setObjectName("label_2");
+        lbl_projection = new QLabel(tab);
+        lbl_projection->setObjectName("lbl_projection");
         QFont font1;
         font1.setPointSize(15);
-        label_2->setFont(font1);
-        label_2->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        lbl_projection->setFont(font1);
+        lbl_projection->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
-        gridLayout_3->addWidget(label_2, 0, 0, 1, 1);
+        layout_projection->addWidget(lbl_projection, 0, 0, 1, 1);
 
-        radioButton_5 = new QRadioButton(tab);
-        radioButton_5->setObjectName("radioButton_5");
-        radioButton_5->setChecked(true);
+        rb_central_projection = new QRadioButton(tab);
+        rb_central_projection->setObjectName("rb_central_projection");
+        rb_central_projection->setChecked(true);
 
-        gridLayout_3->addWidget(radioButton_5, 0, 1, 1, 1);
+        layout_projection->addWidget(rb_central_projection, 0, 1, 1, 1);
 
 
-        verticalLayout_6->addLayout(gridLayout_3);
+        verticalLayout_6->addLayout(layout_projection);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        label_4 = new QLabel(tab);
-        label_4->setObjectName("label_4");
-        label_4->setFont(font1);
-        label_4->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        layout_size = new QHBoxLayout();
+        layout_size->setObjectName("layout_size");
+        lbl_size = new QLabel(tab);
+        lbl_size->setObjectName("lbl_size");
+        lbl_size->setFont(font1);
+        lbl_size->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
-        horizontalLayout_4->addWidget(label_4);
+        layout_size->addWidget(lbl_size);
 
-        doubleSpinBox = new QDoubleSpinBox(tab);
-        doubleSpinBox->setObjectName("doubleSpinBox");
+        sb_size = new QDoubleSpinBox(tab);
+        sb_size->setObjectName("sb_size");
         QFont font2;
         font2.setPointSize(20);
         font2.setBold(true);
-        doubleSpinBox->setFont(font2);
-        doubleSpinBox->setMinimum(0.100000000000000);
-        doubleSpinBox->setMaximum(2.000000000000000);
-        doubleSpinBox->setSingleStep(0.010000000000000);
-        doubleSpinBox->setValue(0.500000000000000);
+        sb_size->setFont(font2);
+        sb_size->setMinimum(0.100000000000000);
+        sb_size->setMaximum(2.000000000000000);
+        sb_size->setSingleStep(0.010000000000000);
+        sb_size->setValue(0.500000000000000);
 
-        horizontalLayout_4->addWidget(doubleSpinBox);
+        layout_size->addWidget(sb_size);
 
 
-        verticalLayout_6->addLayout(horizontalLayout_4);
+        verticalLayout_6->addLayout(layout_size);
 
         verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -222,122 +217,122 @@ public:
         tab_2->setObjectName("tab_2");
         verticalLayout_7 = new QVBoxLayout(tab_2);
         verticalLayout_7->setObjectName("verticalLayout_7");
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName("horizontalLayout_5");
-        moveLeftButton = new QPushButton(tab_2);
-        moveLeftButton->setObjectName("moveLeftButton");
+        x_move_layout = new QHBoxLayout();
+        x_move_layout->setObjectName("x_move_layout");
+        btn_left_move = new QPushButton(tab_2);
+        btn_left_move->setObjectName("btn_left_move");
         QSizePolicy sizePolicy1(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(moveLeftButton->sizePolicy().hasHeightForWidth());
-        moveLeftButton->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(btn_left_move->sizePolicy().hasHeightForWidth());
+        btn_left_move->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_5->addWidget(moveLeftButton);
+        x_move_layout->addWidget(btn_left_move);
 
-        moveRightButton = new QPushButton(tab_2);
-        moveRightButton->setObjectName("moveRightButton");
-        sizePolicy1.setHeightForWidth(moveRightButton->sizePolicy().hasHeightForWidth());
-        moveRightButton->setSizePolicy(sizePolicy1);
+        btn_right_move = new QPushButton(tab_2);
+        btn_right_move->setObjectName("btn_right_move");
+        sizePolicy1.setHeightForWidth(btn_right_move->sizePolicy().hasHeightForWidth());
+        btn_right_move->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_5->addWidget(moveRightButton);
-
-
-        verticalLayout_7->addLayout(horizontalLayout_5);
-
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setObjectName("horizontalLayout_6");
-        moveUpButton = new QPushButton(tab_2);
-        moveUpButton->setObjectName("moveUpButton");
-        sizePolicy1.setHeightForWidth(moveUpButton->sizePolicy().hasHeightForWidth());
-        moveUpButton->setSizePolicy(sizePolicy1);
-
-        horizontalLayout_6->addWidget(moveUpButton);
-
-        moveDownButton = new QPushButton(tab_2);
-        moveDownButton->setObjectName("moveDownButton");
-        sizePolicy1.setHeightForWidth(moveDownButton->sizePolicy().hasHeightForWidth());
-        moveDownButton->setSizePolicy(sizePolicy1);
-
-        horizontalLayout_6->addWidget(moveDownButton);
+        x_move_layout->addWidget(btn_right_move);
 
 
-        verticalLayout_7->addLayout(horizontalLayout_6);
+        verticalLayout_7->addLayout(x_move_layout);
 
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setObjectName("horizontalLayout_7");
-        moveForwardButton = new QPushButton(tab_2);
-        moveForwardButton->setObjectName("moveForwardButton");
-        sizePolicy1.setHeightForWidth(moveForwardButton->sizePolicy().hasHeightForWidth());
-        moveForwardButton->setSizePolicy(sizePolicy1);
+        y_move_layout = new QHBoxLayout();
+        y_move_layout->setObjectName("y_move_layout");
+        btn_up_move = new QPushButton(tab_2);
+        btn_up_move->setObjectName("btn_up_move");
+        sizePolicy1.setHeightForWidth(btn_up_move->sizePolicy().hasHeightForWidth());
+        btn_up_move->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_7->addWidget(moveForwardButton);
+        y_move_layout->addWidget(btn_up_move);
 
-        moveBackwardButton = new QPushButton(tab_2);
-        moveBackwardButton->setObjectName("moveBackwardButton");
-        sizePolicy1.setHeightForWidth(moveBackwardButton->sizePolicy().hasHeightForWidth());
-        moveBackwardButton->setSizePolicy(sizePolicy1);
+        btn_down_move = new QPushButton(tab_2);
+        btn_down_move->setObjectName("btn_down_move");
+        sizePolicy1.setHeightForWidth(btn_down_move->sizePolicy().hasHeightForWidth());
+        btn_down_move->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_7->addWidget(moveBackwardButton);
-
-
-        verticalLayout_7->addLayout(horizontalLayout_7);
-
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName("horizontalLayout_8");
-        rotateUpButton = new QPushButton(tab_2);
-        rotateUpButton->setObjectName("rotateUpButton");
-        sizePolicy1.setHeightForWidth(rotateUpButton->sizePolicy().hasHeightForWidth());
-        rotateUpButton->setSizePolicy(sizePolicy1);
-
-        horizontalLayout_8->addWidget(rotateUpButton);
-
-        rotateDownButton = new QPushButton(tab_2);
-        rotateDownButton->setObjectName("rotateDownButton");
-        sizePolicy1.setHeightForWidth(rotateDownButton->sizePolicy().hasHeightForWidth());
-        rotateDownButton->setSizePolicy(sizePolicy1);
-
-        horizontalLayout_8->addWidget(rotateDownButton);
+        y_move_layout->addWidget(btn_down_move);
 
 
-        verticalLayout_7->addLayout(horizontalLayout_8);
+        verticalLayout_7->addLayout(y_move_layout);
 
-        horizontalLayout_9 = new QHBoxLayout();
-        horizontalLayout_9->setObjectName("horizontalLayout_9");
-        rotateLeftButton = new QPushButton(tab_2);
-        rotateLeftButton->setObjectName("rotateLeftButton");
-        sizePolicy1.setHeightForWidth(rotateLeftButton->sizePolicy().hasHeightForWidth());
-        rotateLeftButton->setSizePolicy(sizePolicy1);
+        z_move_layout = new QHBoxLayout();
+        z_move_layout->setObjectName("z_move_layout");
+        btn_forward_move = new QPushButton(tab_2);
+        btn_forward_move->setObjectName("btn_forward_move");
+        sizePolicy1.setHeightForWidth(btn_forward_move->sizePolicy().hasHeightForWidth());
+        btn_forward_move->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_9->addWidget(rotateLeftButton);
+        z_move_layout->addWidget(btn_forward_move);
 
-        rotateRightButton = new QPushButton(tab_2);
-        rotateRightButton->setObjectName("rotateRightButton");
-        sizePolicy1.setHeightForWidth(rotateRightButton->sizePolicy().hasHeightForWidth());
-        rotateRightButton->setSizePolicy(sizePolicy1);
+        btn_backward_move = new QPushButton(tab_2);
+        btn_backward_move->setObjectName("btn_backward_move");
+        sizePolicy1.setHeightForWidth(btn_backward_move->sizePolicy().hasHeightForWidth());
+        btn_backward_move->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_9->addWidget(rotateRightButton);
-
-
-        verticalLayout_7->addLayout(horizontalLayout_9);
-
-        horizontalLayout_10 = new QHBoxLayout();
-        horizontalLayout_10->setObjectName("horizontalLayout_10");
-        rotateClockwiseButton = new QPushButton(tab_2);
-        rotateClockwiseButton->setObjectName("rotateClockwiseButton");
-        sizePolicy1.setHeightForWidth(rotateClockwiseButton->sizePolicy().hasHeightForWidth());
-        rotateClockwiseButton->setSizePolicy(sizePolicy1);
-
-        horizontalLayout_10->addWidget(rotateClockwiseButton);
-
-        rotateCounterclockwiseButton = new QPushButton(tab_2);
-        rotateCounterclockwiseButton->setObjectName("rotateCounterclockwiseButton");
-        sizePolicy1.setHeightForWidth(rotateCounterclockwiseButton->sizePolicy().hasHeightForWidth());
-        rotateCounterclockwiseButton->setSizePolicy(sizePolicy1);
-
-        horizontalLayout_10->addWidget(rotateCounterclockwiseButton);
+        z_move_layout->addWidget(btn_backward_move);
 
 
-        verticalLayout_7->addLayout(horizontalLayout_10);
+        verticalLayout_7->addLayout(z_move_layout);
+
+        layout_up_down_rotate = new QHBoxLayout();
+        layout_up_down_rotate->setObjectName("layout_up_down_rotate");
+        btn_up_rotate = new QPushButton(tab_2);
+        btn_up_rotate->setObjectName("btn_up_rotate");
+        sizePolicy1.setHeightForWidth(btn_up_rotate->sizePolicy().hasHeightForWidth());
+        btn_up_rotate->setSizePolicy(sizePolicy1);
+
+        layout_up_down_rotate->addWidget(btn_up_rotate);
+
+        btn_down_rotate = new QPushButton(tab_2);
+        btn_down_rotate->setObjectName("btn_down_rotate");
+        sizePolicy1.setHeightForWidth(btn_down_rotate->sizePolicy().hasHeightForWidth());
+        btn_down_rotate->setSizePolicy(sizePolicy1);
+
+        layout_up_down_rotate->addWidget(btn_down_rotate);
+
+
+        verticalLayout_7->addLayout(layout_up_down_rotate);
+
+        layout_left_right = new QHBoxLayout();
+        layout_left_right->setObjectName("layout_left_right");
+        btn_left_rotate = new QPushButton(tab_2);
+        btn_left_rotate->setObjectName("btn_left_rotate");
+        sizePolicy1.setHeightForWidth(btn_left_rotate->sizePolicy().hasHeightForWidth());
+        btn_left_rotate->setSizePolicy(sizePolicy1);
+
+        layout_left_right->addWidget(btn_left_rotate);
+
+        btn_right_rotate = new QPushButton(tab_2);
+        btn_right_rotate->setObjectName("btn_right_rotate");
+        sizePolicy1.setHeightForWidth(btn_right_rotate->sizePolicy().hasHeightForWidth());
+        btn_right_rotate->setSizePolicy(sizePolicy1);
+
+        layout_left_right->addWidget(btn_right_rotate);
+
+
+        verticalLayout_7->addLayout(layout_left_right);
+
+        layout_clockwise_rotate = new QHBoxLayout();
+        layout_clockwise_rotate->setObjectName("layout_clockwise_rotate");
+        btn_clockwise_rotate = new QPushButton(tab_2);
+        btn_clockwise_rotate->setObjectName("btn_clockwise_rotate");
+        sizePolicy1.setHeightForWidth(btn_clockwise_rotate->sizePolicy().hasHeightForWidth());
+        btn_clockwise_rotate->setSizePolicy(sizePolicy1);
+
+        layout_clockwise_rotate->addWidget(btn_clockwise_rotate);
+
+        btn_counterlock_rotate = new QPushButton(tab_2);
+        btn_counterlock_rotate->setObjectName("btn_counterlock_rotate");
+        sizePolicy1.setHeightForWidth(btn_counterlock_rotate->sizePolicy().hasHeightForWidth());
+        btn_counterlock_rotate->setSizePolicy(sizePolicy1);
+
+        layout_clockwise_rotate->addWidget(btn_counterlock_rotate);
+
+
+        verticalLayout_7->addLayout(layout_clockwise_rotate);
 
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -348,78 +343,78 @@ public:
         tab_3->setObjectName("tab_3");
         verticalLayout_5 = new QVBoxLayout(tab_3);
         verticalLayout_5->setObjectName("verticalLayout_5");
-        gridLayout = new QGridLayout();
-        gridLayout->setObjectName("gridLayout");
-        radio_sphere = new QRadioButton(tab_3);
-        radio_sphere->setObjectName("radio_sphere");
-        radio_sphere->setChecked(false);
+        layout_render_settings = new QGridLayout();
+        layout_render_settings->setObjectName("layout_render_settings");
+        rb_sphere = new QRadioButton(tab_3);
+        rb_sphere->setObjectName("rb_sphere");
+        rb_sphere->setChecked(false);
 
-        gridLayout->addWidget(radio_sphere, 1, 4, 1, 1);
+        layout_render_settings->addWidget(rb_sphere, 1, 4, 1, 1);
 
-        checkBox_ln = new QCheckBox(tab_3);
-        checkBox_ln->setObjectName("checkBox_ln");
-        checkBox_ln->setChecked(false);
+        cb_lines = new QCheckBox(tab_3);
+        cb_lines->setObjectName("cb_lines");
+        cb_lines->setChecked(false);
 
-        gridLayout->addWidget(checkBox_ln, 0, 0, 1, 1);
+        layout_render_settings->addWidget(cb_lines, 0, 0, 1, 1);
 
-        lnWidthSpinBox = new QDoubleSpinBox(tab_3);
-        lnWidthSpinBox->setObjectName("lnWidthSpinBox");
-        lnWidthSpinBox->setFocusPolicy(Qt::FocusPolicy::ClickFocus);
-        lnWidthSpinBox->setDecimals(0);
-        lnWidthSpinBox->setMinimum(1.000000000000000);
-        lnWidthSpinBox->setMaximum(15.000000000000000);
-        lnWidthSpinBox->setSingleStep(1.000000000000000);
+        sb_lines_size = new QDoubleSpinBox(tab_3);
+        sb_lines_size->setObjectName("sb_lines_size");
+        sb_lines_size->setFocusPolicy(Qt::FocusPolicy::ClickFocus);
+        sb_lines_size->setDecimals(0);
+        sb_lines_size->setMinimum(1.000000000000000);
+        sb_lines_size->setMaximum(15.000000000000000);
+        sb_lines_size->setSingleStep(1.000000000000000);
 
-        gridLayout->addWidget(lnWidthSpinBox, 0, 2, 1, 1);
+        layout_render_settings->addWidget(sb_lines_size, 0, 2, 1, 1);
 
-        pnSizeSpinBox = new QDoubleSpinBox(tab_3);
-        pnSizeSpinBox->setObjectName("pnSizeSpinBox");
-        pnSizeSpinBox->setFocusPolicy(Qt::FocusPolicy::ClickFocus);
-        pnSizeSpinBox->setDecimals(0);
-        pnSizeSpinBox->setMinimum(1.000000000000000);
-        pnSizeSpinBox->setMaximum(15.000000000000000);
-        pnSizeSpinBox->setSingleStep(1.000000000000000);
-        pnSizeSpinBox->setValue(1.000000000000000);
+        sb_points_size = new QDoubleSpinBox(tab_3);
+        sb_points_size->setObjectName("sb_points_size");
+        sb_points_size->setFocusPolicy(Qt::FocusPolicy::ClickFocus);
+        sb_points_size->setDecimals(0);
+        sb_points_size->setMinimum(1.000000000000000);
+        sb_points_size->setMaximum(15.000000000000000);
+        sb_points_size->setSingleStep(1.000000000000000);
+        sb_points_size->setValue(1.000000000000000);
 
-        gridLayout->addWidget(pnSizeSpinBox, 1, 2, 1, 1);
+        layout_render_settings->addWidget(sb_points_size, 1, 2, 1, 1);
 
-        verticesColorButton = new QPushButton(tab_3);
-        verticesColorButton->setObjectName("verticesColorButton");
+        btn_points_color = new QPushButton(tab_3);
+        btn_points_color->setObjectName("btn_points_color");
 
-        gridLayout->addWidget(verticesColorButton, 1, 1, 1, 1);
+        layout_render_settings->addWidget(btn_points_color, 1, 1, 1, 1);
 
-        checkBox_pn = new QCheckBox(tab_3);
-        checkBox_pn->setObjectName("checkBox_pn");
-        checkBox_pn->setChecked(false);
+        cb_points = new QCheckBox(tab_3);
+        cb_points->setObjectName("cb_points");
+        cb_points->setChecked(false);
 
-        gridLayout->addWidget(checkBox_pn, 1, 0, 1, 1);
+        layout_render_settings->addWidget(cb_points, 1, 0, 1, 1);
 
-        edgesColorButton = new QPushButton(tab_3);
-        edgesColorButton->setObjectName("edgesColorButton");
+        btn_lines_color = new QPushButton(tab_3);
+        btn_lines_color->setObjectName("btn_lines_color");
 
-        gridLayout->addWidget(edgesColorButton, 0, 1, 1, 1);
+        layout_render_settings->addWidget(btn_lines_color, 0, 1, 1, 1);
 
-        radio_cube = new QRadioButton(tab_3);
-        radio_cube->setObjectName("radio_cube");
-        radio_cube->setChecked(true);
+        rb_cube = new QRadioButton(tab_3);
+        rb_cube->setObjectName("rb_cube");
+        rb_cube->setChecked(true);
 
-        gridLayout->addWidget(radio_cube, 1, 3, 1, 1);
+        layout_render_settings->addWidget(rb_cube, 1, 3, 1, 1);
 
-        checkBox_ln_2 = new QCheckBox(tab_3);
-        checkBox_ln_2->setObjectName("checkBox_ln_2");
-        checkBox_ln_2->setChecked(false);
+        cb_dotted = new QCheckBox(tab_3);
+        cb_dotted->setObjectName("cb_dotted");
+        cb_dotted->setChecked(false);
 
-        gridLayout->addWidget(checkBox_ln_2, 0, 3, 1, 1);
+        layout_render_settings->addWidget(cb_dotted, 0, 3, 1, 1);
 
 
-        verticalLayout_5->addLayout(gridLayout);
+        verticalLayout_5->addLayout(layout_render_settings);
 
-        changeBGColorButton = new QPushButton(tab_3);
-        changeBGColorButton->setObjectName("changeBGColorButton");
-        sizePolicy1.setHeightForWidth(changeBGColorButton->sizePolicy().hasHeightForWidth());
-        changeBGColorButton->setSizePolicy(sizePolicy1);
+        btn_bg_color = new QPushButton(tab_3);
+        btn_bg_color->setObjectName("btn_bg_color");
+        sizePolicy1.setHeightForWidth(btn_bg_color->sizePolicy().hasHeightForWidth());
+        btn_bg_color->setSizePolicy(sizePolicy1);
 
-        verticalLayout_5->addWidget(changeBGColorButton);
+        verticalLayout_5->addWidget(btn_bg_color);
 
         verticalSpacer_3 = new QSpacerItem(20, 332, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -428,65 +423,55 @@ public:
         tabWidget->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName("tab_4");
-        gif_timer_label = new QLabel(tab_4);
-        gif_timer_label->setObjectName("gif_timer_label");
-        gif_timer_label->setGeometry(QRect(20, 260, 76, 19));
-        verticalLayoutWidget = new QWidget(tab_4);
-        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(0, 10, 351, 281));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        screenshotButton = new QPushButton(verticalLayoutWidget);
-        screenshotButton->setObjectName("screenshotButton");
+        verticalLayout_2 = new QVBoxLayout(tab_4);
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        btn_screenshot = new QPushButton(tab_4);
+        btn_screenshot->setObjectName("btn_screenshot");
         QSizePolicy sizePolicy2(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(screenshotButton->sizePolicy().hasHeightForWidth());
-        screenshotButton->setSizePolicy(sizePolicy2);
+        sizePolicy2.setHeightForWidth(btn_screenshot->sizePolicy().hasHeightForWidth());
+        btn_screenshot->setSizePolicy(sizePolicy2);
 
-        verticalLayout->addWidget(screenshotButton);
+        verticalLayout_2->addWidget(btn_screenshot);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout->addItem(verticalSpacer);
+        verticalLayout_2->addItem(verticalSpacer);
 
         tabWidget->addTab(tab_4, QString());
 
-        verticalLayout_3->addWidget(tabWidget);
+        layout_optional_btns->addWidget(tabWidget);
 
 
-        verticalLayout_4->addLayout(verticalLayout_3);
+        verticalLayout_4->addLayout(layout_optional_btns);
 
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName("verticalLayout_2");
-        loadModelFileButton = new QPushButton(centralwidget);
-        loadModelFileButton->setObjectName("loadModelFileButton");
+        layout_main_btns = new QVBoxLayout();
+        layout_main_btns->setObjectName("layout_main_btns");
+        btn_open = new QPushButton(centralwidget);
+        btn_open->setObjectName("btn_open");
 
-        verticalLayout_2->addWidget(loadModelFileButton);
+        layout_main_btns->addWidget(btn_open);
 
-        QuitButton = new QPushButton(centralwidget);
-        QuitButton->setObjectName("QuitButton");
+        btn_quit = new QPushButton(centralwidget);
+        btn_quit->setObjectName("btn_quit");
 
-        verticalLayout_2->addWidget(QuitButton);
+        layout_main_btns->addWidget(btn_quit);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout_2->addItem(verticalSpacer_2);
+        layout_main_btns->addItem(verticalSpacer_2);
 
 
-        verticalLayout_4->addLayout(verticalLayout_2);
+        verticalLayout_4->addLayout(layout_main_btns);
 
         verticalLayout_4->setStretch(0, 3);
         verticalLayout_4->setStretch(1, 1);
 
-        horizontalLayout->addLayout(verticalLayout_4);
+        horizontalLayout_2->addLayout(verticalLayout_4);
 
-        horizontalLayout->setStretch(0, 3);
-        horizontalLayout->setStretch(1, 1);
-
-        horizontalLayout_2->addLayout(horizontalLayout);
-
+        horizontalLayout_2->setStretch(0, 3);
+        horizontalLayout_2->setStretch(1, 1);
         View->setCentralWidget(centralwidget);
         menuBar = new QMenuBar(View);
         menuBar->setObjectName("menuBar");
@@ -494,9 +479,9 @@ public:
         View->setMenuBar(menuBar);
 
         retranslateUi(View);
-        QObject::connect(QuitButton, &QPushButton::clicked, View, qOverload<>(&QMainWindow::close));
+        QObject::connect(btn_quit, &QPushButton::clicked, View, qOverload<>(&QMainWindow::close));
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(View);
@@ -505,85 +490,84 @@ public:
     void retranslateUi(QMainWindow *View)
     {
         View->setWindowTitle(QCoreApplication::translate("View", "View", nullptr));
-        label->setText(QCoreApplication::translate("View", "#FILENAME#", nullptr));
-        label_vertices->setText(QString());
-        label_vectors->setText(QString());
-        radioButton_4->setText(QCoreApplication::translate("View", "\320\237\320\260\321\200\320\260\320\273\320\273\320\265\320\273\321\214\320\275\320\260\321\217", nullptr));
-        label_2->setText(QCoreApplication::translate("View", "\320\237\321\200\320\276\320\265\320\272\321\206\320\270\321\217", nullptr));
-        radioButton_5->setText(QCoreApplication::translate("View", "\320\246\320\265\320\275\321\202\321\200\320\260\320\273\321\214\320\275\320\260\321\217", nullptr));
-        label_4->setText(QCoreApplication::translate("View", "\320\240\320\260\320\267\320\274\320\265\321\200", nullptr));
+        lbl_filename->setText(QCoreApplication::translate("View", "#FILENAME#", nullptr));
+        lbl_vertices->setText(QString());
+        lbl_vectors->setText(QString());
+        rb_parallel_projection->setText(QCoreApplication::translate("View", "\320\237\320\260\321\200\320\260\320\273\320\273\320\265\320\273\321\214\320\275\320\260\321\217", nullptr));
+        lbl_projection->setText(QCoreApplication::translate("View", "\320\237\321\200\320\276\320\265\320\272\321\206\320\270\321\217", nullptr));
+        rb_central_projection->setText(QCoreApplication::translate("View", "\320\246\320\265\320\275\321\202\321\200\320\260\320\273\321\214\320\275\320\260\321\217", nullptr));
+        lbl_size->setText(QCoreApplication::translate("View", "\320\240\320\260\320\267\320\274\320\265\321\200", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("View", "General", nullptr));
-        moveLeftButton->setText(QCoreApplication::translate("View", "X++", nullptr));
+        btn_left_move->setText(QCoreApplication::translate("View", "X++", nullptr));
 #if QT_CONFIG(shortcut)
-        moveLeftButton->setShortcut(QCoreApplication::translate("View", "4", nullptr));
+        btn_left_move->setShortcut(QCoreApplication::translate("View", "4", nullptr));
 #endif // QT_CONFIG(shortcut)
-        moveRightButton->setText(QCoreApplication::translate("View", "X--", nullptr));
+        btn_right_move->setText(QCoreApplication::translate("View", "X--", nullptr));
 #if QT_CONFIG(shortcut)
-        moveRightButton->setShortcut(QCoreApplication::translate("View", "6", nullptr));
+        btn_right_move->setShortcut(QCoreApplication::translate("View", "6", nullptr));
 #endif // QT_CONFIG(shortcut)
-        moveUpButton->setText(QCoreApplication::translate("View", "Y++", nullptr));
+        btn_up_move->setText(QCoreApplication::translate("View", "Y++", nullptr));
 #if QT_CONFIG(shortcut)
-        moveUpButton->setShortcut(QCoreApplication::translate("View", "8", nullptr));
+        btn_up_move->setShortcut(QCoreApplication::translate("View", "8", nullptr));
 #endif // QT_CONFIG(shortcut)
-        moveDownButton->setText(QCoreApplication::translate("View", "Y--", nullptr));
+        btn_down_move->setText(QCoreApplication::translate("View", "Y--", nullptr));
 #if QT_CONFIG(shortcut)
-        moveDownButton->setShortcut(QCoreApplication::translate("View", "2", nullptr));
+        btn_down_move->setShortcut(QCoreApplication::translate("View", "2", nullptr));
 #endif // QT_CONFIG(shortcut)
-        moveForwardButton->setText(QCoreApplication::translate("View", "Z++", nullptr));
+        btn_forward_move->setText(QCoreApplication::translate("View", "Z++", nullptr));
 #if QT_CONFIG(shortcut)
-        moveForwardButton->setShortcut(QCoreApplication::translate("View", "1", nullptr));
+        btn_forward_move->setShortcut(QCoreApplication::translate("View", "1", nullptr));
 #endif // QT_CONFIG(shortcut)
-        moveBackwardButton->setText(QCoreApplication::translate("View", "Z--", nullptr));
+        btn_backward_move->setText(QCoreApplication::translate("View", "Z--", nullptr));
 #if QT_CONFIG(shortcut)
-        moveBackwardButton->setShortcut(QCoreApplication::translate("View", "9", nullptr));
+        btn_backward_move->setShortcut(QCoreApplication::translate("View", "9", nullptr));
 #endif // QT_CONFIG(shortcut)
-        rotateUpButton->setText(QCoreApplication::translate("View", "Up", nullptr));
+        btn_up_rotate->setText(QCoreApplication::translate("View", "Up", nullptr));
 #if QT_CONFIG(shortcut)
-        rotateUpButton->setShortcut(QCoreApplication::translate("View", "Ctrl+8", nullptr));
+        btn_up_rotate->setShortcut(QCoreApplication::translate("View", "Ctrl+8", nullptr));
 #endif // QT_CONFIG(shortcut)
-        rotateDownButton->setText(QCoreApplication::translate("View", "Down", nullptr));
+        btn_down_rotate->setText(QCoreApplication::translate("View", "Down", nullptr));
 #if QT_CONFIG(shortcut)
-        rotateDownButton->setShortcut(QCoreApplication::translate("View", "Ctrl+2", nullptr));
+        btn_down_rotate->setShortcut(QCoreApplication::translate("View", "Ctrl+2", nullptr));
 #endif // QT_CONFIG(shortcut)
-        rotateLeftButton->setText(QCoreApplication::translate("View", "Left", nullptr));
+        btn_left_rotate->setText(QCoreApplication::translate("View", "Left", nullptr));
 #if QT_CONFIG(shortcut)
-        rotateLeftButton->setShortcut(QCoreApplication::translate("View", "Ctrl+4", nullptr));
+        btn_left_rotate->setShortcut(QCoreApplication::translate("View", "Ctrl+4", nullptr));
 #endif // QT_CONFIG(shortcut)
-        rotateRightButton->setText(QCoreApplication::translate("View", "Right", nullptr));
+        btn_right_rotate->setText(QCoreApplication::translate("View", "Right", nullptr));
 #if QT_CONFIG(shortcut)
-        rotateRightButton->setShortcut(QCoreApplication::translate("View", "Ctrl+6", nullptr));
+        btn_right_rotate->setShortcut(QCoreApplication::translate("View", "Ctrl+6", nullptr));
 #endif // QT_CONFIG(shortcut)
-        rotateClockwiseButton->setText(QCoreApplication::translate("View", "Clockwise", nullptr));
+        btn_clockwise_rotate->setText(QCoreApplication::translate("View", "Clockwise", nullptr));
 #if QT_CONFIG(shortcut)
-        rotateClockwiseButton->setShortcut(QCoreApplication::translate("View", "Ctrl+1", nullptr));
+        btn_clockwise_rotate->setShortcut(QCoreApplication::translate("View", "Ctrl+1", nullptr));
 #endif // QT_CONFIG(shortcut)
-        rotateCounterclockwiseButton->setText(QCoreApplication::translate("View", "Counterclock", nullptr));
+        btn_counterlock_rotate->setText(QCoreApplication::translate("View", "Counterclock", nullptr));
 #if QT_CONFIG(shortcut)
-        rotateCounterclockwiseButton->setShortcut(QCoreApplication::translate("View", "Ctrl+9", nullptr));
+        btn_counterlock_rotate->setShortcut(QCoreApplication::translate("View", "Ctrl+9", nullptr));
 #endif // QT_CONFIG(shortcut)
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("View", "Move", nullptr));
-        radio_sphere->setText(QCoreApplication::translate("View", "sphere", nullptr));
-        checkBox_ln->setText(QCoreApplication::translate("View", "Lines", nullptr));
-        verticesColorButton->setText(QCoreApplication::translate("View", "Color", nullptr));
-        checkBox_pn->setText(QCoreApplication::translate("View", "Points", nullptr));
-        edgesColorButton->setText(QCoreApplication::translate("View", "Color", nullptr));
-        radio_cube->setText(QCoreApplication::translate("View", "cube", nullptr));
-        checkBox_ln_2->setText(QCoreApplication::translate("View", "dotted", nullptr));
-        changeBGColorButton->setText(QCoreApplication::translate("View", "background color", nullptr));
+        rb_sphere->setText(QCoreApplication::translate("View", "sphere", nullptr));
+        cb_lines->setText(QCoreApplication::translate("View", "Lines", nullptr));
+        btn_points_color->setText(QCoreApplication::translate("View", "Color", nullptr));
+        cb_points->setText(QCoreApplication::translate("View", "Points", nullptr));
+        btn_lines_color->setText(QCoreApplication::translate("View", "Color", nullptr));
+        rb_cube->setText(QCoreApplication::translate("View", "cube", nullptr));
+        cb_dotted->setText(QCoreApplication::translate("View", "dotted", nullptr));
+        btn_bg_color->setText(QCoreApplication::translate("View", "background color", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("View", "Look", nullptr));
-        gif_timer_label->setText(QString());
-        screenshotButton->setText(QCoreApplication::translate("View", "Screenshot", nullptr));
+        btn_screenshot->setText(QCoreApplication::translate("View", "Screenshot", nullptr));
 #if QT_CONFIG(shortcut)
-        screenshotButton->setShortcut(QCoreApplication::translate("View", "P", nullptr));
+        btn_screenshot->setShortcut(QCoreApplication::translate("View", "P", nullptr));
 #endif // QT_CONFIG(shortcut)
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("View", "Screen", nullptr));
-        loadModelFileButton->setText(QCoreApplication::translate("View", "OPEN", nullptr));
+        btn_open->setText(QCoreApplication::translate("View", "Open", nullptr));
 #if QT_CONFIG(shortcut)
-        loadModelFileButton->setShortcut(QCoreApplication::translate("View", "Ctrl+O", nullptr));
+        btn_open->setShortcut(QCoreApplication::translate("View", "Ctrl+O", nullptr));
 #endif // QT_CONFIG(shortcut)
-        QuitButton->setText(QCoreApplication::translate("View", "Quit", nullptr));
+        btn_quit->setText(QCoreApplication::translate("View", "Quit", nullptr));
 #if QT_CONFIG(shortcut)
-        QuitButton->setShortcut(QCoreApplication::translate("View", "Q", nullptr));
+        btn_quit->setShortcut(QCoreApplication::translate("View", "Q", nullptr));
 #endif // QT_CONFIG(shortcut)
     } // retranslateUi
 

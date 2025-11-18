@@ -7,17 +7,17 @@
 #include "../model/model.h"
 
 namespace s21 {
-using my_vector = std::vector<double>&;
 
 class Controller {
  public:
-  Controller(my_vector coordinates, my_vector vertices, std::string& filename)
+  Controller(std::vector<double>& coordinates,
+             std::vector<double>& vertices, const std::string& filename)
       : model_(coordinates, vertices, filename) {}
   bool Parse();
   void Normalization();
   void Scale(double value);
-  void Rotate(const double& step, const Axis& axis);
-  void Move(const double& step, const Axis& axis);
+  void Rotate(double step, Axis axis);
+  void Move(double step, Axis axis);
   void FillingCoords();
 
  private:
