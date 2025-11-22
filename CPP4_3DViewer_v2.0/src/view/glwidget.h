@@ -1,5 +1,4 @@
-#ifndef VIEWER_V_2_0_SRC_VIEW_GLWIDGET_H
-#define VIEWER_V_2_0_SRC_VIEW_GLWIDGET_H
+#pragma once
 
 #include <QColor>
 #include <QOpenGLFunctions>
@@ -10,8 +9,8 @@
 
 namespace s21 {
 enum class PointType { SPHERE, CUBE };
-enum class ProjectionType {CENTRAL, PARALLEL };
-enum class LineType {SOLID, DOTTED };
+enum class ProjectionType { CENTRAL, PARALLEL };
+enum class LineType { SOLID, DOTTED };
 
 class GLWidget : public QOpenGLFunctions, public QOpenGLWidget {
 public:
@@ -36,14 +35,13 @@ public:
         float y_rot{0};
     };
 
-    GLWidget();
+    GLWidget() = default;
     explicit GLWidget(QWidget *parent = nullptr);
     void initializeGL() override;
     void resizeGL(int w, int h) override;
     void paintGL() override;
     void DrawLines();
     void DrawPoints();
-    void Change();
     void SetProjection();
 
     void SetVertices(std::vector<double>* vertices_ptr) { vertices_ = vertices_ptr; }
@@ -90,4 +88,3 @@ private:
 };
 
 }  // namespace s21
-#endif  // VIEWER_V_2_0_SRC_VIEW_GLWIDGET_H

@@ -1,5 +1,4 @@
-#ifndef VIEWER_V_2_0_SRC_CONTROLLER_CONTROLLER_H
-#define VIEWER_V_2_0_SRC_CONTROLLER_CONTROLLER_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -13,16 +12,14 @@ class Controller {
   Controller(std::vector<double>& coordinates,
              std::vector<double>& vertices, const std::string& filename)
       : model_(coordinates, vertices, filename) {}
-  bool Parse();
-  void Normalization();
-  void Scale(double value);
-  void Rotate(double step, Axis axis);
-  void Move(double step, Axis axis);
-  void FillingCoords();
+	bool Parse();
+	void Normalization();
+	void Scale(double value);
+	void Rotate(double step, Axis axis);
+	void Move(double step, Axis axis);
+	void FillingCoords();
 
- private:
-  Model model_;
+private:
+  	Model model_;
 };
 }  // namespace s21
-
-#endif  // VIEWER_V_2_0_SRC_CONTROLLER_CONTROLLER_H

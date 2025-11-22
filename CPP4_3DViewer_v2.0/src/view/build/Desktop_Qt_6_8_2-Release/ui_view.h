@@ -353,7 +353,7 @@ public:
 
         cb_lines = new QCheckBox(tab_3);
         cb_lines->setObjectName("cb_lines");
-        cb_lines->setChecked(false);
+        cb_lines->setChecked(true);
 
         layout_render_settings->addWidget(cb_lines, 0, 0, 1, 1);
 
@@ -385,7 +385,7 @@ public:
 
         cb_points = new QCheckBox(tab_3);
         cb_points->setObjectName("cb_points");
-        cb_points->setChecked(false);
+        cb_points->setChecked(true);
 
         layout_render_settings->addWidget(cb_points, 1, 0, 1, 1);
 
@@ -481,7 +481,7 @@ public:
         retranslateUi(View);
         QObject::connect(btn_quit, &QPushButton::clicked, View, qOverload<>(&QMainWindow::close));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(View);

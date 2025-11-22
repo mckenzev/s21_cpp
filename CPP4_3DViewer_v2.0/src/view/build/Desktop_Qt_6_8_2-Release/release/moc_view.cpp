@@ -39,7 +39,7 @@ struct qt_meta_tag_ZN3s214ViewE_t {};
 #ifdef QT_MOC_HAS_STRINGDATA
 static constexpr auto qt_meta_stringdata_ZN3s214ViewE = QtMocHelpers::stringData(
     "s21::View",
-    "LoadChecker",
+    "SetSettings",
     "",
     "LoadMod",
     "filename",
@@ -176,7 +176,7 @@ Q_CONSTINIT const QMetaObject s21::View::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_tag_ZN3s214ViewE_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<View, std::true_type>,
-        // method 'LoadChecker'
+        // method 'SetSettings'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'LoadMod'
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
@@ -264,7 +264,7 @@ void s21::View::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     auto *_t = static_cast<View *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->LoadChecker(); break;
+        case 0: _t->SetSettings(); break;
         case 1: { int _r = _t->LoadMod((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 2: _t->MoveRepeat(); break;

@@ -1,5 +1,4 @@
-#ifndef VIEWER_V_2_0_SRC_VIEW_H
-#define VIEWER_V_2_0_SRC_VIEW_H
+#pragma once
 
 #include <QApplication>
 #include <QColorDialog>
@@ -22,17 +21,17 @@ QT_END_NAMESPACE
 
 namespace s21 {
 class View : public QMainWindow {
-  Q_OBJECT
- public:
+Q_OBJECT
+
+public:
   View(QWidget* parent = nullptr);
   ~View();
   // void SaveSetts();
   // void loadSetts();
-  QColor bk, bl, wh;
-  QString last_obj;
+
 
  private slots:
-  void LoadChecker();
+  void SetSettings();
   int LoadMod(QString filename);
   void MoveRepeat();
 
@@ -74,6 +73,7 @@ class View : public QMainWindow {
   std::vector<double> coordinates_;
   std::vector<double> vertices_;
   Controller controller_;
+  QString last_obj;
+
 };
 }  // namespace s21
-#endif  // VIEWER_V_2_0_SRC_VIEW_H
